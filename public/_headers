@@ -4,6 +4,12 @@
 /project-screenshots/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
+/yogesh-a-raut-share-v1.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/yogesh-a-raut-share-v1.svg
+  Cache-Control: public, max-age=31536000, immutable
+
 /*
   Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
   Permissions-Policy: camera=(), microphone=(), geolocation=()

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="share-title share-description">
+  <title id="share-title">Yogesh A. Raut</title>
+  <desc id="share-description">YR monogram and Yogesh A. Raut, Digital Transformation and AI Automation Leader</desc>
+  <rect width="1200" height="627" fill="#06182b"/>
+  <path d="M0 0h18v627H0z" fill="#0c4df5"/>
+  <path d="M18 0h6v627h-6z" fill="#cde72d"/>
+
+  <g fill="none" stroke="#ffffff" opacity="0.08">
+    <circle cx="1060" cy="116" r="190"/>
+    <circle cx="1060" cy="116" r="145"/>
+    <circle cx="1060" cy="116" r="100"/>
+    <path d="M840 510h330M875 548h295M920 586h250"/>
+  </g>
+  <path d="M908 0h292v7H908z" fill="#0c4df5"/>
+
+  <g transform="translate(76 70)">
+    <rect width="164" height="164" rx="20" fill="#03111f" stroke="#ffffff" stroke-opacity="0.22"/>
+    <rect y="151" width="164" height="13" rx="6.5" fill="#0c4df5"/>
+    <text x="82" y="111" text-anchor="middle" font-family="Helvetica Neue, Inter, Arial, sans-serif" font-size="72" font-weight="850" letter-spacing="-7">
+      <tspan fill="#ffffff">Y</tspan><tspan fill="#cde72d">R</tspan>
+    </text>
+  </g>
+
+  <text x="76" y="338" fill="#ffffff" font-family="Helvetica Neue, Inter, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-2.5">Yogesh A. Raut</text>
+  <text x="78" y="391" fill="#b8c2cf" font-family="Helvetica Neue, Inter, Arial, sans-serif" font-size="29" font-weight="500">Digital Transformation &amp; AI Automation Leader</text>
+
+  <path d="M78 456h670" stroke="#cde72d" stroke-width="3"/>
+  <g fill="#ffffff" font-family="Helvetica Neue, Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2.4">
+    <text x="78" y="507">STRATEGY</text>
+    <text x="241" y="507" fill="#cde72d">→</text>
+    <text x="283" y="507">SYSTEMS</text>
+    <text x="435" y="507" fill="#cde72d">→</text>
+    <text x="477" y="507">PEOPLE</text>
+  </g>
+
+  <circle cx="1087" cy="475" r="13" fill="#cde72d"/>
+  <circle cx="1126" cy="475" r="13" fill="#0c4df5"/>
+  <text x="1124" y="555" text-anchor="end" fill="#b8c2cf" font-family="Helvetica Neue, Inter, Arial, sans-serif" font-size="18" letter-spacing="0.5">yogesh-raut-portfolio.pages.dev</text>
+</svg>

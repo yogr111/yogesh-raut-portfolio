@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="favicon-title favicon-description">
+  <title id="favicon-title">YR</title>
+  <desc id="favicon-description">Yogesh A. Raut monogram</desc>
+  <rect width="64" height="64" rx="8" fill="#03111f"/>
+  <rect y="58" width="64" height="6" rx="3" fill="#0c4df5"/>
+  <path d="M8 13h10l10 15 9-15h10L33 36v15H23V36L8 13Z" fill="#ffffff"/>
+  <path d="M38 13h9c8 0 12 4 12 11 0 5-2 8-6 10l8 17H51l-6-15h-2v15h-9V28h12c3 0 4-1 4-4s-1-4-4-4h-8v-7Z" fill="#cde72d"/>
+</svg>

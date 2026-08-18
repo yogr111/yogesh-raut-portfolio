@@ -1,6 +1,6 @@
-# Yogesh Raut — Portfolio
+# Yogesh A. Raut — Portfolio
 
-A public, privacy-safe portfolio for Yogesh Raut, focused on digital transformation, AI-assisted workflows, and cross-functional execution.
+A public, privacy-safe portfolio for Yogesh A. Raut, focused on digital transformation, AI-assisted workflows, and cross-functional execution.
 
 ## Local development
 

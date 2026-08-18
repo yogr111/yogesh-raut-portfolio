@@ -27,18 +27,39 @@ main {
 
 .brand {
   display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
   margin-bottom: clamp(4rem, 12vh, 8rem);
   color: #ffffff;
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.12em;
   text-decoration: none;
 }
 
-.brand span:last-child,
+.brand-mark {
+  width: 2.55rem;
+  height: 2.55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.45rem;
+  background: #03111f;
+  box-shadow: inset 0 -0.18rem 0 #0c4df5;
+  font-size: 1.08rem;
+  font-weight: 850;
+  letter-spacing: -0.09em;
+}
+
+.brand-mark span:last-child,
 h1 span,
 .status {
   color: #cde72d;
+}
+
+.brand-name {
+  font-size: 0.92rem;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
 }
 
 .status {
