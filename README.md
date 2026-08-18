@@ -20,11 +20,11 @@ The production output is written to `dist/`.
 
 ## Cloudflare Pages
 
-- Framework preset: `Vite`
+- Build system: `Vite`
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Production branch: `main`
 
 ## Privacy model
 
-This repository intentionally excludes internal source code, operational screenshots, private URLs, credentials, customer or candidate data, financial details, and implementation architecture. Project summaries describe only high-level professional outcomes already supported by public profile material.
+This repository includes only tightly cropped, privacy-reviewed interface previews. It intentionally excludes raw operational screenshots, internal source code, private URLs, credentials, customer or candidate data, employee records, financial details, and implementation architecture. Project summaries stay at capability level and use human-reviewed public wording.

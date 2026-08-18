@@ -41,7 +41,8 @@ body {
   overflow-x: hidden;
 }
 
-body.menu-open {
+body.menu-open,
+body.dialog-open {
   overflow: hidden;
 }
 
@@ -598,7 +599,7 @@ a {
   content: "";
   position: absolute;
   top: -1.5rem;
-  bottom: -32.5rem;
+  bottom: -47rem;
   left: 0;
   width: 0.85rem;
   background: var(--cobalt);
@@ -657,6 +658,11 @@ a {
 
 .project-row:hover {
   background: rgba(12, 77, 245, 0.035);
+  border-color: var(--cobalt);
+}
+
+.project-row:has(.project-open:focus-visible) {
+  background: rgba(12, 77, 245, 0.055);
   border-color: var(--cobalt);
 }
 
@@ -719,6 +725,55 @@ a {
   z-index: 2;
 }
 
+.project-open,
+.project-row-map > .project-open {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  color: var(--cobalt);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-open:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--cobalt);
+}
+
+.project-open svg {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 0.8rem;
+  width: 1.45rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: translateX(-0.65rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.project-row:hover .project-open svg,
+.project-open:focus-visible svg {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (hover: none) {
+  .project-open svg {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .systems-map {
   position: absolute;
   z-index: 1;
@@ -778,6 +833,198 @@ a {
 
 .privacy-note strong {
   color: var(--text);
+}
+
+.project-dialog {
+  width: min(94vw, 82rem);
+  max-width: none;
+  max-height: min(90dvh, 56rem);
+  padding: 0;
+  color: var(--text);
+  border: 0;
+  background: var(--paper);
+  box-shadow: 0 2.5rem 7rem rgba(3, 17, 31, 0.38);
+  overflow: hidden;
+}
+
+.project-dialog::backdrop {
+  background: rgba(3, 17, 31, 0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.project-dialog[open] {
+  animation: project-dialog-enter 260ms var(--ease) both;
+}
+
+.project-dialog-shell {
+  position: relative;
+  max-height: min(90dvh, 56rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(24rem, 0.85fr);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.project-dialog > form {
+  position: absolute;
+  z-index: 6;
+  top: 1rem;
+  right: 1rem;
+  margin: 0;
+}
+
+.project-dialog-close {
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  border: 1px solid rgba(7, 21, 37, 0.18);
+  background: rgba(250, 250, 247, 0.94);
+  cursor: pointer;
+}
+
+.project-dialog-close svg {
+  width: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.project-dialog-media {
+  min-height: 35rem;
+  margin: 0;
+  padding: clamp(3.8rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem) 1.6rem;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 1.5rem;
+  color: var(--muted-dark);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(12, 77, 245, 0.2), transparent 20rem),
+    var(--ink);
+}
+
+.project-dialog-media img {
+  width: auto;
+  max-width: 100%;
+  max-height: 30rem;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+}
+
+.project-dialog-media figcaption {
+  max-width: 38rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.project-dialog-content {
+  padding: clamp(4.5rem, 7vw, 6.5rem) clamp(2rem, 4vw, 4.3rem) 3.2rem;
+}
+
+.project-dialog-category {
+  margin: 0 0 1.2rem;
+  color: var(--cobalt);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.project-dialog-content h2 {
+  margin: 0;
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 650;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.project-dialog-summary {
+  margin: 1.3rem 0 2.2rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.project-dialog-detail {
+  padding: 1.55rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.project-dialog-detail h3 {
+  margin: 0 0 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-dialog-detail p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.project-dialog-detail ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1.2rem;
+  list-style: none;
+}
+
+.project-dialog-detail li {
+  position: relative;
+  padding-left: 1.05rem;
+  font-size: 0.88rem;
+  font-weight: 580;
+  line-height: 1.4;
+}
+
+.project-dialog-detail li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--acid);
+}
+
+.project-dialog-privacy {
+  margin: 0.4rem 0 0;
+  padding: 1rem 1.1rem;
+  color: var(--muted);
+  border-left: 0.28rem solid var(--acid);
+  background: rgba(12, 77, 245, 0.045);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.project-dialog-privacy strong {
+  color: var(--text);
+}
+
+@keyframes project-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .approach-section {
@@ -1236,6 +1483,10 @@ a {
   transition-delay: 360ms;
 }
 
+.project-row:nth-child(6) {
+  transition-delay: 450ms;
+}
+
 @keyframes orbit-rotate {
   to {
     transform: rotate(360deg);
@@ -1397,7 +1648,7 @@ a {
   }
 
   .section-heading.with-rule::before {
-    bottom: -39rem;
+    bottom: -47.7rem;
   }
 
   .project-row {
@@ -1413,6 +1664,23 @@ a {
 
   .systems-map {
     right: 0;
+  }
+
+  .project-dialog {
+    width: min(94vw, 48rem);
+  }
+
+  .project-dialog-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .project-dialog-media {
+    min-height: 18rem;
+    padding: 4.5rem 1.5rem 1.5rem;
+  }
+
+  .project-dialog-content {
+    padding: 2.7rem clamp(1.5rem, 6vw, 3rem) 2.5rem;
   }
 
   .approach-grid {
@@ -1534,7 +1802,7 @@ a {
 
   .section-heading.with-rule::before {
     width: 0.52rem;
-    bottom: -51rem;
+    bottom: -61.5rem;
   }
 
   .section-heading.with-rule::after {
@@ -1574,6 +1842,47 @@ a {
 
   .systems-map {
     display: none;
+  }
+
+  .project-open svg {
+    right: 0.1rem;
+    bottom: 0.65rem;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .project-dialog {
+    width: calc(100vw - 1rem);
+    max-height: 94dvh;
+  }
+
+  .project-dialog-shell {
+    max-height: 94dvh;
+  }
+
+  .project-dialog-media {
+    min-height: 14rem;
+    padding: 4.25rem 1rem 1.25rem;
+  }
+
+  .project-dialog-media figcaption {
+    font-size: 0.72rem;
+  }
+
+  .project-dialog-content {
+    padding: 2.2rem 1.35rem 2rem;
+  }
+
+  .project-dialog-content h2 {
+    font-size: clamp(2.35rem, 12vw, 3.4rem);
+  }
+
+  .project-dialog-summary {
+    font-size: 1rem;
+  }
+
+  .project-dialog-detail ul {
+    grid-template-columns: 1fr;
   }
 
   .approach-section {
