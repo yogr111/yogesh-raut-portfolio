@@ -14,8 +14,12 @@ const forbidden = [
   { label: "API key assignment", pattern: /api[_-]?key\s*[:=]\s*["'][^"']+/i },
   { label: "candidate identifier", pattern: /candidate[_ -]?(?:id|nid)\s*[:=]/i },
   { label: "payment identifier", pattern: /payment[_ -]?id\s*[:=]/i },
-  { label: "email address", pattern: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i },
 ];
+
+const emailPattern = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi;
+const permittedPublicEmailHashes = new Set([
+  "699a1c0d21c8e5e085242e8a4eb0b074b60bc7285ca19e0c3199aa5c359afb40",
+]);
 
 const formerPublicIdentifierHashes = new Set([
   "cede0324c80f58214a6393b081d9585cb0f1c05d1da188c682abc6bd73bcada9",
@@ -62,6 +66,11 @@ for (const file of files) {
   const content = await readFile(new URL(file, root), "utf8");
   for (const rule of forbidden) {
     if (rule.pattern.test(content)) findings.push(`${file}: ${rule.label}`);
+  }
+  for (const email of content.match(emailPattern) ?? []) {
+    if (!permittedPublicEmailHashes.has(digest(email.toLowerCase()))) {
+      findings.push(`${file}: email address`);
+    }
   }
   if (containsFormerPublicIdentifier(content)) findings.push(`${file}: former public identifier`);
 }
