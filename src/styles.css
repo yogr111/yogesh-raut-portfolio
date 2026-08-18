@@ -880,6 +880,7 @@ a {
   padding: 0;
   display: grid;
   place-items: center;
+  place-self: center;
   color: var(--ink);
   border: 1px solid rgba(7, 21, 37, 0.18);
   background: rgba(250, 250, 247, 0.94);
@@ -901,28 +902,131 @@ a {
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   color: var(--muted-dark);
   background:
     radial-gradient(circle at 18% 18%, rgba(12, 77, 245, 0.2), transparent 20rem),
     var(--ink);
 }
 
-.project-dialog-media img {
-  width: auto;
-  max-width: 100%;
-  max-height: 30rem;
+.project-gallery-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(14rem, 31vw, 30rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(2, 3rem) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) 3rem;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+#project-dialog-image {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
   object-fit: contain;
   border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.025);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
 }
 
+.project-gallery-arrow {
+  position: static;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  border: 1px solid rgba(7, 21, 37, 0.18);
+  background: rgba(250, 250, 247, 0.96);
+  box-shadow: 0 0.55rem 1.6rem rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+}
+
+.project-gallery-arrow:hover {
+  color: var(--white);
+  background: var(--cobalt);
+}
+
+.project-gallery-arrow-prev {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.project-gallery-arrow-next {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.project-gallery-arrow svg {
+  width: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project-gallery-thumbnails {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-padding-inline: 0.35rem;
+  scrollbar-width: thin;
+}
+
+.project-gallery-thumbnail {
+  flex: 0 0 5.25rem;
+  min-width: 44px;
+  min-height: 44px;
+  height: 3.75rem;
+  padding: 0.18rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.project-gallery-thumbnail[aria-current="true"] {
+  border-color: var(--acid);
+  box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--acid);
+}
+
+.project-gallery-thumbnail img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
 .project-dialog-media figcaption {
+  width: 100%;
   max-width: 38rem;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   line-height: 1.5;
   text-align: center;
+}
+
+.project-gallery-count {
+  flex: 0 0 auto;
+  color: var(--acid);
+  font-weight: 750;
 }
 
 .project-dialog-content {
@@ -1679,6 +1783,10 @@ a {
     padding: 4.5rem 1.5rem 1.5rem;
   }
 
+  .project-gallery-stage {
+    height: clamp(13rem, 58vw, 25rem);
+  }
+
   .project-dialog-content {
     padding: 2.7rem clamp(1.5rem, 6vw, 3rem) 2.5rem;
   }
@@ -1865,7 +1973,21 @@ a {
     padding: 4.25rem 1rem 1.25rem;
   }
 
+  .project-gallery-stage {
+    height: clamp(12rem, 56vw, 16rem);
+  }
+
+  .project-gallery-arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .project-gallery-thumbnails {
+    justify-content: flex-start;
+  }
+
   .project-dialog-media figcaption {
+    flex-wrap: wrap;
     font-size: 0.72rem;
   }
 

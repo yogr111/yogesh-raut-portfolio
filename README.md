@@ -27,4 +27,4 @@ The production output is written to `dist/`.
 
 ## Privacy model
 
-This repository includes only tightly cropped, privacy-reviewed interface previews. It intentionally excludes raw operational screenshots, internal source code, private URLs, credentials, customer or candidate data, employee records, financial details, and implementation architecture. Project summaries stay at capability level and use human-reviewed public wording.
+This repository includes only sanitized, privacy-reviewed and brand-minimized interface previews. Sensitive screens use irreversible redaction or clearly synthetic examples; raw operational screenshots are never published. The site intentionally excludes internal source code, private URLs, credentials, customer or candidate data, employee records, financial details and implementation architecture. Project summaries use generic capability names and human-reviewed public wording.
