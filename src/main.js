@@ -179,6 +179,31 @@ const projectDetails = {
       },
     ],
   },
+  candidateMobile: {
+    title: "Candidate Journey Mobile App",
+    category: "Mobile self-service & workflow visibility",
+    summary: "An authenticated cross-platform mobile workspace that gives candidates a clear view of journey status, outstanding requests, document activity and recorded payment milestones.",
+    description: "Built with React Native and TypeScript, the app combines candidate sign-in with a four-tab dashboard for journey updates, action requests, document uploads and payment visibility. Candidates can review assigned tasks, select and upload requested files, track uploaded-document history and view recorded payment milestones. Periodic refresh keeps the experience aligned with the operational workflow.",
+    features: ["React Native and TypeScript", "iOS and Android targets", "Request-led multi-file upload", "Journey and milestone visibility"],
+    gallery: "portrait",
+    slides: [
+      {
+        src: "/project-screenshots/candidate-mobile-sign-in-v1.png",
+        alt: "Illustrative iOS candidate app sign-in screen with masked placeholder fields",
+        caption: "This AI-generated synthetic sign-in view represents authenticated candidate access without exposing real identities, credentials or company branding.",
+      },
+      {
+        src: "/project-screenshots/candidate-mobile-home-v1.png",
+        alt: "Illustrative iOS candidate journey dashboard showing status and self-service areas",
+        caption: "This AI-generated synthetic home view brings journey status, requests, documents and payments together without operational content.",
+      },
+      {
+        src: "/project-screenshots/candidate-mobile-requests-v1.png",
+        alt: "Illustrative iOS request screen for selecting and uploading generic documents",
+        caption: "This AI-generated synthetic request flow demonstrates native file selection and upload while keeping real document types and candidate records private.",
+      },
+    ],
+  },
 };
 
 let lastProjectTrigger = null;
@@ -362,6 +387,7 @@ const openProjectDialog = (projectKey, trigger) => {
   lastProjectTrigger = trigger;
   activeProjectSlides = project.slides;
   activeProjectSlideIndex = 0;
+  projectDialog.dataset.gallery = project.gallery ?? "landscape";
   projectDialogGalleryStatus.textContent = "";
   buildProjectThumbnails(activeProjectSlides);
   renderProjectSlide(0, { announce: false });

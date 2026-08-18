@@ -599,7 +599,7 @@ a {
   content: "";
   position: absolute;
   top: -1.5rem;
-  bottom: -47rem;
+  bottom: -54.3rem;
   left: 0;
   width: 0.85rem;
   background: var(--cobalt);
@@ -931,6 +931,16 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.025);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+}
+
+.project-dialog[data-gallery="portrait"] .project-gallery-stage {
+  height: clamp(25rem, 36vw, 32rem);
+}
+
+.project-dialog[data-gallery="portrait"] #project-dialog-image {
+  width: auto;
+  max-width: 100%;
+  justify-self: center;
 }
 
 .project-gallery-arrow {
@@ -1591,6 +1601,10 @@ a {
   transition-delay: 450ms;
 }
 
+.project-row:nth-child(7) {
+  transition-delay: 540ms;
+}
+
 @keyframes orbit-rotate {
   to {
     transform: rotate(360deg);
@@ -1752,7 +1766,7 @@ a {
   }
 
   .section-heading.with-rule::before {
-    bottom: -47.7rem;
+    bottom: -56.4rem;
   }
 
   .project-row {
@@ -1785,6 +1799,10 @@ a {
 
   .project-gallery-stage {
     height: clamp(13rem, 58vw, 25rem);
+  }
+
+  .project-dialog[data-gallery="portrait"] .project-gallery-stage {
+    height: clamp(24rem, 62vw, 30rem);
   }
 
   .project-dialog-content {
@@ -1910,7 +1928,7 @@ a {
 
   .section-heading.with-rule::before {
     width: 0.52rem;
-    bottom: -61.5rem;
+    bottom: -72rem;
   }
 
   .section-heading.with-rule::after {
@@ -1975,6 +1993,10 @@ a {
 
   .project-gallery-stage {
     height: clamp(12rem, 56vw, 16rem);
+  }
+
+  .project-dialog[data-gallery="portrait"] .project-gallery-stage {
+    height: clamp(22rem, 62dvh, 27rem);
   }
 
   .project-gallery-arrow {
