@@ -92,19 +92,19 @@ const projectDetails = {
     features: ["Prioritized action queues", "Integration-ready events", "Role-based workflow stages", "Human-led approvals"],
     slides: [
       {
-        src: "/project-screenshots/training-ops-overview-v1.jpg",
-        alt: "Blank training intake workflow introduction",
-        caption: "A guided intake begins the training workflow without exposing an individual record.",
+        src: "/project-screenshots/training-ops-dashboard-v2.png",
+        alt: "Sanitized training operations dashboard with navigation visible and operational data covered by opaque redactions",
+        caption: "An operational overview coordinates intake, batches, fees, completions and handover while live figures, organizations and people remain unpublished.",
       },
       {
-        src: "/project-screenshots/training-ops-intake-v1.jpg",
-        alt: "Empty intake and contact form with no personal details entered",
-        caption: "Structured intake keeps required information consistent before assessment and enrollment.",
+        src: "/project-screenshots/training-ops-reports-v2.png",
+        alt: "Sanitized training reporting and audit interface with navigation visible and live records covered by opaque redactions",
+        caption: "Role-based reporting brings filters, status monitoring and audit review together while identities, dates and operational figures remain unpublished.",
       },
       {
-        src: "/project-screenshots/training-ops-enrollment-v1.jpg",
-        alt: "Empty enrollment form for language and placement workflow details",
-        caption: "Enrollment fields connect assessment status, language selection and downstream handover.",
+        src: "/project-screenshots/training-ops-learning-experience-v2.png",
+        alt: "Public language academy landing page presenting global career-focused training",
+        caption: "The public learning experience connects language training, AI-assisted practice, certification and interview preparation.",
       },
     ],
   },
@@ -459,6 +459,7 @@ const openProjectDialog = (projectKey, trigger) => {
   document.body.classList.add("dialog-open");
   projectDialog.showModal();
   window.requestAnimationFrame(() => {
+    projectDialogShell.scrollTop = 0;
     projectDialogThumbnails.scrollLeft = 0;
     projectDialogClose.focus();
   });
