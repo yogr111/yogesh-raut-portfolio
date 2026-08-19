@@ -1261,32 +1261,8 @@ a {
   position: absolute;
   top: 50%;
   right: 7%;
-  left: 0;
+  left: 1.75rem;
   border-top: 2px solid var(--cobalt);
-}
-
-.approach-route::after,
-.approach-route span::before,
-.approach-route span::after {
-  content: "";
-  position: absolute;
-  top: calc(50% - 0.32rem);
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 50%;
-  background: var(--white);
-}
-
-.approach-route::after {
-  left: 0;
-}
-
-.approach-route span::before {
-  left: 39.5%;
-}
-
-.approach-route span::after {
-  left: 79%;
 }
 
 .approach-grid {
@@ -1303,7 +1279,7 @@ a {
 .approach-item::before {
   content: attr(data-number);
   position: absolute;
-  top: -4.25rem;
+  top: -3.35rem;
   left: 0;
   width: 3.5rem;
   height: 3.5rem;
