@@ -28,6 +28,7 @@ const projectDialogSummary = document.querySelector("#project-dialog-summary");
 const projectDialogDescription = document.querySelector("#project-dialog-description");
 const projectDialogFeatures = document.querySelector("#project-dialog-features");
 const projectDialogClose = document.querySelector(".project-dialog-close");
+const projectDialogShell = document.querySelector(".project-dialog-shell");
 
 const projectDetails = {
   recruitment: {
@@ -204,6 +205,48 @@ const projectDetails = {
       },
     ],
   },
+  connectedOps: {
+    title: "Connected Business Operations & Automation",
+    category: "Business systems integration & automation",
+    summary: "A business operations integration programme connecting Zoho applications and WhatsApp workflows to reduce manual handoffs and improve everyday efficiency.",
+    description: "Worked with organisational teams to embed connected Zoho products into daily operations—from custom applications and CRM workflows to documents, projects, meetings, campaigns and messaging automation. The work streamlined recurring processes, improved coordination and made operational information easier to manage without publishing organization-specific logic or records.",
+    features: [
+      "Custom operational applications with Zoho Creator",
+      "CRM and relationship workflows with Zoho CRM",
+      "Cross-application automation with Zoho Flow",
+      "Documents and approvals with Zoho Writer and Zoho Sign",
+      "Work coordination with Zoho Projects and Zoho Meeting",
+      "Engagement through Zoho Campaigns, Zoho SalesIQ and Zoho Social",
+      "WhatsApp integration and automation through Wati",
+    ],
+    slides: [
+      {
+        src: "/project-screenshots/connected-operations-creator-dashboard-v2.png",
+        alt: "Sanitized Zoho Creator operations dashboard with safe navigation visible and live data covered by opaque redactions",
+        caption: "Operational visibility in Zoho Creator, with safe navigation retained and organization names, identities and live metrics irreversibly removed.",
+      },
+      {
+        src: "/project-screenshots/connected-operations-flow-library-v2.png",
+        alt: "Sanitized Zoho Flow workspace with navigation visible and private workflow details covered by opaque redactions",
+        caption: "Cross-application automation in Zoho Flow, with product navigation visible while workflow names, deployment states and account details remain unpublished.",
+      },
+      {
+        src: "/project-screenshots/connected-operations-portal-admin-v2.png",
+        alt: "Sanitized Zoho Creator portal administration view with navigation visible and application details covered by opaque redactions",
+        caption: "Purpose-built portal administration in Zoho Creator, with application names, portal addresses and user counts irreversibly removed.",
+      },
+      {
+        src: "/project-screenshots/connected-operations-crm-dashboard-v2.png",
+        alt: "Sanitized Zoho CRM dashboard with navigation visible and organization metrics covered by opaque redactions",
+        caption: "CRM workflow visibility in Zoho CRM, with generic navigation retained and organization identifiers, dates and live figures removed.",
+      },
+      {
+        src: "/project-screenshots/connected-operations-messaging-analytics-v2.png",
+        alt: "Sanitized Wati WhatsApp automation dashboard with navigation visible and account data covered by opaque redactions",
+        caption: "WhatsApp operations through Wati, with product navigation visible while phone numbers, account details, dates and operational metrics remain unpublished.",
+      },
+    ],
+  },
 };
 
 let lastProjectTrigger = null;
@@ -353,9 +396,16 @@ const renderProjectSlide = (index, { announce = true } = {}) => {
   if (announce) {
     projectDialogGalleryStatus.textContent = `Screenshot ${activeProjectSlideIndex + 1} of ${activeProjectSlides.length}. ${slide.caption}`;
     window.requestAnimationFrame(() => {
-      projectDialogThumbnails
-        .querySelector(`[data-slide-index="${activeProjectSlideIndex}"]`)
-        ?.scrollIntoView({ block: "nearest", inline: "nearest" });
+      const activeThumbnail = projectDialogThumbnails.querySelector(`[data-slide-index="${activeProjectSlideIndex}"]`);
+      if (!activeThumbnail) return;
+
+      const stripBounds = projectDialogThumbnails.getBoundingClientRect();
+      const thumbnailBounds = activeThumbnail.getBoundingClientRect();
+      if (thumbnailBounds.left < stripBounds.left) {
+        projectDialogThumbnails.scrollLeft -= stripBounds.left - thumbnailBounds.left;
+      } else if (thumbnailBounds.right > stripBounds.right) {
+        projectDialogThumbnails.scrollLeft += thumbnailBounds.right - stripBounds.right;
+      }
     });
   }
 };
@@ -387,6 +437,8 @@ const openProjectDialog = (projectKey, trigger) => {
   lastProjectTrigger = trigger;
   activeProjectSlides = project.slides;
   activeProjectSlideIndex = 0;
+  projectDialogShell.scrollTop = 0;
+  projectDialogThumbnails.scrollLeft = 0;
   projectDialog.dataset.gallery = project.gallery ?? "landscape";
   projectDialogGalleryStatus.textContent = "";
   buildProjectThumbnails(activeProjectSlides);
@@ -406,7 +458,10 @@ const openProjectDialog = (projectKey, trigger) => {
   closeMenu();
   document.body.classList.add("dialog-open");
   projectDialog.showModal();
-  window.requestAnimationFrame(() => projectDialogClose.focus());
+  window.requestAnimationFrame(() => {
+    projectDialogThumbnails.scrollLeft = 0;
+    projectDialogClose.focus();
+  });
 };
 
 projectButtons.forEach((button) => {

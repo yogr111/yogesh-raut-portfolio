@@ -36,7 +36,7 @@ html {
 
 body {
   margin: 0;
-  min-width: 20rem;
+  min-width: 0;
   background: var(--ink);
   overflow-x: hidden;
 }
@@ -629,7 +629,7 @@ a {
   content: "";
   position: absolute;
   top: -1.5rem;
-  bottom: -54.3rem;
+  bottom: -2.7rem;
   left: 0;
   width: 0.85rem;
   background: var(--cobalt);
@@ -666,7 +666,19 @@ a {
 }
 
 .project-list {
+  position: relative;
   padding-left: 3.5rem;
+}
+
+.project-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.85rem;
+  background: var(--cobalt);
+  pointer-events: none;
 }
 
 .project-row {
@@ -936,6 +948,15 @@ a {
   background:
     radial-gradient(circle at 18% 18%, rgba(12, 77, 245, 0.2), transparent 20rem),
     var(--ink);
+}
+
+@media (min-width: 861px) {
+  .project-dialog-media {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: min(90dvh, 56rem);
+  }
 }
 
 .project-gallery-stage {
@@ -2002,10 +2023,6 @@ a {
     display: none;
   }
 
-  .section-heading.with-rule::before {
-    bottom: -56.4rem;
-  }
-
   .project-row {
     min-height: 8.7rem;
     grid-template-columns: 4rem 1fr;
@@ -2188,7 +2205,6 @@ a {
 
   .section-heading.with-rule::before {
     width: 0.52rem;
-    bottom: -72rem;
   }
 
   .section-heading.with-rule::after {
@@ -2203,6 +2219,10 @@ a {
 
   .project-list {
     padding-left: 1.9rem;
+  }
+
+  .project-list::before {
+    width: 0.52rem;
   }
 
   .project-row {
