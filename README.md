@@ -20,6 +20,7 @@ The production output is written to `dist/`.
 
 ## Cloudflare Pages
 
+- Production URL: https://yogesh-raut.pages.dev/
 - Build system: `Vite`
 - Build command: `npm run build`
 - Build output directory: `dist`
